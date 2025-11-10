@@ -1,8 +1,9 @@
-const EventEmitter = require('events');
-const { add } = require('../add')
-const { subtract } = require('../subtract')
-const { multiply } = require('../multiply')
-const { divide } = require('../divide')
+import { EventEmitter } from "events";
+import { add } from '../add.js';
+import { subtract } from '../subtract.js';
+import {multiply} from '../multiply.js';
+import {divide} from '../divide.js';
+
 const myEventEmitter = new EventEmitter();
 
 myEventEmitter.on('add', (a, b) => {
