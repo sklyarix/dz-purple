@@ -1,0 +1,9 @@
+{
+  "name": "dz",
+  "version": "0",
+  "main": "index.js",
+  "repository": "git@github.com:sklyarix/dz-purple.git",
+  "author": "Sklyarenko Aleksandr <work.sklyar@yandex.ru>",
+  "license": "MIT",
+  "type": "module"
+}
