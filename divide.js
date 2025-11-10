@@ -1,0 +1,1 @@
+export const divide = (a, b) => Math.floor(a / b);
