@@ -1,21 +1,20 @@
-let hour;
-let minute;
-let second;
+let hour = 0;
+let minute = 0;
+let second = 0;
 
 for (let i = 2; i <= 4; i++) {
  let str = process.argv[i];
+ if (!str) continue;
  switch (str[str.length - 1]) {
 	case 'h':
-		hour = +str.slice(0, str.length - 1).trim();
+		hour = +str.slice(0, -1).trim();
 		break;
 	case 'm':
-		minute = +str.slice(0, str.length - 1).trim();
+		minute = +str.slice(0, -1).trim();
 		break;
 	case 's':
-		second = +str.slice(0, str.length - 1).trim();
+		second = +str.slice(0, -1).trim();
 		break;
-	default:
-		console.log('incorrect example: 1h 5m 10s')
 	}
 }
 
