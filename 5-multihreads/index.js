@@ -18,12 +18,17 @@ function lineVersion(n){
 	console.log(`количество чисел, делящихся на 3 = ${count}`);
 }
 
-function workerVersion(n){
+async function workerVersion(n){
 	const cores = os.cpus().length;
 	const requestAll = [];
 	
-	for (let i = 0; i < cores; i++) {
-		const arr = createArray(Math.floor(n/cores));
+	// для arr
+	const chunkSize = Math.floor(n / cores);
+	const remainder = n % cores;
+
+	for (let i = 1; i <= cores; i++) {
+		const size = i === cores ? chunkSize + remainder : chunkSize;
+		const arr = createArray(size);
 		const workerPromise = new Promise((resolve, reject) => {
 			const worker = new Worker('./worker.js', {
 				workerData: {arr},
@@ -39,10 +44,7 @@ function workerVersion(n){
 		requestAll.push(workerPromise);
 	}
 	
-	let promiseAll = Promise.all(requestAll)
-	
-	
-	Promise.all(requestAll).then(results => {
+	return await Promise.all(requestAll).then(results => {
         console.log('Все воркеры завершили работу');
 				const count = results.reduce((acc, curr) => acc + curr, 0)
 				console.log(`количество чисел, делящихся на 3 = ${count}`);
