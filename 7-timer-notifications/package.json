@@ -2,7 +2,7 @@
   "name": "7-timer-notifications",
   "version": "1.0.0",
   "main": "index.js",
-  "type": "commonjs",
+  "type": "module",
   "license": "MIT",
   "scripts": {
     "start": "node index.js 0h 0m 1s"
