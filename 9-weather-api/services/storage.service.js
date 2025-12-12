@@ -6,8 +6,7 @@ const filePath = join(homedir(), 'weather-data.json')
 
 const TOKEN_DICTIONARY = {
 	token: 'token',
-	cities: 'cities',
-	lang: 'lang'
+	city: 'city'
 }
 
 const saveKeyValue = async (key, value) => {
@@ -16,20 +15,8 @@ const saveKeyValue = async (key, value) => {
 		const file = await promises.readFile(filePath)
 		data = JSON.parse(file)
 	}
-	if (key === 'cities') {
-		if (!data.cities) data.cities = []
-		await addCity(value, data.cities)
-	} else {
-		data[key] = value
-	}
+	data[key] = value
 	await promises.writeFile(filePath, JSON.stringify(data))
-}
-
-const addCity = async (newCity, cities) => {
-	if (cities.includes(newCity)) {
-		throw new Error('Такой город уже добавлен')
-	}
-	cities.push(newCity)
 }
 
 const getKeyValue = async key => {

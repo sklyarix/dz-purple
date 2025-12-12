@@ -27,7 +27,6 @@ const getWeather = async city => {
 	//const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}`
 
 	const token = await getKeyValue(TOKEN_DICTIONARY.token)
-	const lang = (await getKeyValue(TOKEN_DICTIONARY.lang)) ?? 'en'
 
 	if (!token) {
 		throw new Error('No token provided')
@@ -39,7 +38,7 @@ const getWeather = async city => {
 			params: {
 				q: city,
 				appid: token,
-				lang: lang,
+				lang: 'ru',
 				units: 'metric'
 			}
 		}

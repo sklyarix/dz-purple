@@ -1,0 +1,725 @@
+Index: 8-weather-extented/helpers/args.js
+===================================================================
+diff --git a/8-weather-extented/helpers/args.js b/8-weather-extented/helpers/args.js
+deleted file mode 100644
+--- a/8-weather-extented/helpers/args.js	(revision e000d7d8b81f0a0b3a76f19c312743e73a2095d4)
++++ /dev/null	(revision e000d7d8b81f0a0b3a76f19c312743e73a2095d4)
+@@ -1,19 +0,0 @@
+-const getArgs = args => {
+-	const res = {}
+-	const [executer, file, ...rest] = args
+-
+-	rest.forEach((val, index, array) => {
+-		if (val.charAt(0) === '-') {
+-			if (index === array.length - 1) {
+-				res[val.substring(1)] = true
+-			} else if (array[index + 1].charAt(0) !== '-') {
+-				res[val.substring(1)] = array[index + 1]
+-			} else {
+-				res[val.substring(1)] = true
+-			}
+-		}
+-	})
+-
+-	return res
+-}
+-export { getArgs }
+Index: 8-weather-extented/package-lock.json
+===================================================================
+diff --git a/8-weather-extented/package-lock.json b/8-weather-extented/package-lock.json
+deleted file mode 100644
+--- a/8-weather-extented/package-lock.json	(revision e000d7d8b81f0a0b3a76f19c312743e73a2095d4)
++++ /dev/null	(revision e000d7d8b81f0a0b3a76f19c312743e73a2095d4)
+@@ -1,336 +0,0 @@
+-{
+-  "name": "weather-cli",
+-  "version": "1.0.0",
+-  "lockfileVersion": 3,
+-  "requires": true,
+-  "packages": {
+-    "": {
+-      "name": "weather-cli",
+-      "version": "1.0.0",
+-      "dependencies": {
+-        "axios": "^1.13.2",
+-        "chalk": "^5.6.2",
+-        "dedent-js": "^1.0.1"
+-      },
+-      "bin": {
+-        "weather": "weather.js"
+-      },
+-      "devDependencies": {
+-        "prettier": "^3.7.4"
+-      }
+-    },
+-    "node_modules/asynckit": {
+-      "version": "0.4.0",
+-      "resolved": "https://registry.npmjs.org/asynckit/-/asynckit-0.4.0.tgz",
+-      "integrity": "sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==",
+-      "license": "MIT"
+-    },
+-    "node_modules/axios": {
+-      "version": "1.13.2",
+-      "resolved": "https://registry.npmjs.org/axios/-/axios-1.13.2.tgz",
+-      "integrity": "sha512-VPk9ebNqPcy5lRGuSlKx752IlDatOjT9paPlm8A7yOuW2Fbvp4X3JznJtT4f0GzGLLiWE9W8onz51SqLYwzGaA==",
+-      "license": "MIT",
+-      "dependencies": {
+-        "follow-redirects": "^1.15.6",
+-        "form-data": "^4.0.4",
+-        "proxy-from-env": "^1.1.0"
+-      }
+-    },
+-    "node_modules/call-bind-apply-helpers": {
+-      "version": "1.0.2",
+-      "resolved": "https://registry.npmjs.org/call-bind-apply-helpers/-/call-bind-apply-helpers-1.0.2.tgz",
+-      "integrity": "sha512-Sp1ablJ0ivDkSzjcaJdxEunN5/XvksFJ2sMBFfq6x0ryhQV/2b/KwFe21cMpmHtPOSij8K99/wSfoEuTObmuMQ==",
+-      "license": "MIT",
+-      "dependencies": {
+-        "es-errors": "^1.3.0",
+-        "function-bind": "^1.1.2"
+-      },
+-      "engines": {
+-        "node": ">= 0.4"
+-      }
+-    },
+-    "node_modules/chalk": {
+-      "version": "5.6.2",
+-      "resolved": "https://registry.npmjs.org/chalk/-/chalk-5.6.2.tgz",
+-      "integrity": "sha512-7NzBL0rN6fMUW+f7A6Io4h40qQlG+xGmtMxfbnH/K7TAtt8JQWVQK+6g0UXKMeVJoyV5EkkNsErQ8pVD3bLHbA==",
+-      "license": "MIT",
+-      "engines": {
+-        "node": "^12.17.0 || ^14.13 || >=16.0.0"
+-      },
+-      "funding": {
+-        "url": "https://github.com/chalk/chalk?sponsor=1"
+-      }
+-    },
+-    "node_modules/combined-stream": {
+-      "version": "1.0.8",
+-      "resolved": "https://registry.npmjs.org/combined-stream/-/combined-stream-1.0.8.tgz",
+-      "integrity": "sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==",
+-      "license": "MIT",
+-      "dependencies": {
+-        "delayed-stream": "~1.0.0"
+-      },
+-      "engines": {
+-        "node": ">= 0.8"
+-      }
+-    },
+-    "node_modules/dedent-js": {
+-      "version": "1.0.1",
+-      "resolved": "https://registry.npmjs.org/dedent-js/-/dedent-js-1.0.1.tgz",
+-      "integrity": "sha512-OUepMozQULMLUmhxS95Vudo0jb0UchLimi3+pQ2plj61Fcy8axbP9hbiD4Sz6DPqn6XG3kfmziVfQ1rSys5AJQ==",
+-      "license": "MIT"
+-    },
+-    "node_modules/delayed-stream": {
+-      "version": "1.0.0",
+-      "resolved": "https://registry.npmjs.org/delayed-stream/-/delayed-stream-1.0.0.tgz",
+-      "integrity": "sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==",
+-      "license": "MIT",
+-      "engines": {
+-        "node": ">=0.4.0"
+-      }
+-    },
+-    "node_modules/dunder-proto": {
+-      "version": "1.0.1",
+-      "resolved": "https://registry.npmjs.org/dunder-proto/-/dunder-proto-1.0.1.tgz",
+-      "integrity": "sha512-KIN/nDJBQRcXw0MLVhZE9iQHmG68qAVIBg9CqmUYjmQIhgij9U5MFvrqkUL5FbtyyzZuOeOt0zdeRe4UY7ct+A==",
+-      "license": "MIT",
+-      "dependencies": {
+-        "call-bind-apply-helpers": "^1.0.1",
+-        "es-errors": "^1.3.0",
+-        "gopd": "^1.2.0"
+-      },
+-      "engines": {
+-        "node": ">= 0.4"
+-      }
+-    },
+-    "node_modules/es-define-property": {
+-      "version": "1.0.1",
+-      "resolved": "https://registry.npmjs.org/es-define-property/-/es-define-property-1.0.1.tgz",
+-      "integrity": "sha512-e3nRfgfUZ4rNGL232gUgX06QNyyez04KdjFrF+LTRoOXmrOgFKDg4BCdsjW8EnT69eqdYGmRpJwiPVYNrCaW3g==",
+-      "license": "MIT",
+-      "engines": {
+-        "node": ">= 0.4"
+-      }
+-    },
+-    "node_modules/es-errors": {
+-      "version": "1.3.0",
+-      "resolved": "https://registry.npmjs.org/es-errors/-/es-errors-1.3.0.tgz",
+-      "integrity": "sha512-Zf5H2Kxt2xjTvbJvP2ZWLEICxA6j+hAmMzIlypy4xcBg1vKVnx89Wy0GbS+kf5cwCVFFzdCFh2XSCFNULS6csw==",
+-      "license": "MIT",
+-      "engines": {
+-        "node": ">= 0.4"
+-      }
+-    },
+-    "node_modules/es-object-atoms": {
+-      "version": "1.1.1",
+-      "resolved": "https://registry.npmjs.org/es-object-atoms/-/es-object-atoms-1.1.1.tgz",
+-      "integrity": "sha512-FGgH2h8zKNim9ljj7dankFPcICIK9Cp5bm+c2gQSYePhpaG5+esrLODihIorn+Pe6FGJzWhXQotPv73jTaldXA==",
+-      "license": "MIT",
+-      "dependencies": {
+-        "es-errors": "^1.3.0"
+-      },
+-      "engines": {
+-        "node": ">= 0.4"
+-      }
+-    },
+-    "node_modules/es-set-tostringtag": {
+-      "version": "2.1.0",
+-      "resolved": "https://registry.npmjs.org/es-set-tostringtag/-/es-set-tostringtag-2.1.0.tgz",
+-      "integrity": "sha512-j6vWzfrGVfyXxge+O0x5sh6cvxAog0a/4Rdd2K36zCMV5eJ+/+tOAngRO8cODMNWbVRdVlmGZQL2YS3yR8bIUA==",
+-      "license": "MIT",
+-      "dependencies": {
+-        "es-errors": "^1.3.0",
+-        "get-intrinsic": "^1.2.6",
+-        "has-tostringtag": "^1.0.2",
+-        "hasown": "^2.0.2"
+-      },
+-      "engines": {
+-        "node": ">= 0.4"
+-      }
+-    },
+-    "node_modules/follow-redirects": {
+-      "version": "1.15.11",
+-      "resolved": "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.11.tgz",
+-      "integrity": "sha512-deG2P0JfjrTxl50XGCDyfI97ZGVCxIpfKYmfyrQ54n5FO/0gfIES8C/Psl6kWVDolizcaaxZJnTS0QSMxvnsBQ==",
+-      "funding": [
+-        {
+-          "type": "individual",
+-          "url": "https://github.com/sponsors/RubenVerborgh"
+-        }
+-      ],
+-      "license": "MIT",
+-      "engines": {
+-        "node": ">=4.0"
+-      },
+-      "peerDependenciesMeta": {
+-        "debug": {
+-          "optional": true
+-        }
+-      }
+-    },
+-    "node_modules/form-data": {
+-      "version": "4.0.5",
+-      "resolved": "https://registry.npmjs.org/form-data/-/form-data-4.0.5.tgz",
+-      "integrity": "sha512-8RipRLol37bNs2bhoV67fiTEvdTrbMUYcFTiy3+wuuOnUog2QBHCZWXDRijWQfAkhBj2Uf5UnVaiWwA5vdd82w==",
+-      "license": "MIT",
+-      "dependencies": {
+-        "asynckit": "^0.4.0",
+-        "combined-stream": "^1.0.8",
+-        "es-set-tostringtag": "^2.1.0",
+-        "hasown": "^2.0.2",
+-        "mime-types": "^2.1.12"
+-      },
+-      "engines": {
+-        "node": ">= 6"
+-      }
+-    },
+-    "node_modules/function-bind": {
+-      "version": "1.1.2",
+-      "resolved": "https://registry.npmjs.org/function-bind/-/function-bind-1.1.2.tgz",
+-      "integrity": "sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA==",
+-      "license": "MIT",
+-      "funding": {
+-        "url": "https://github.com/sponsors/ljharb"
+-      }
+-    },
+-    "node_modules/get-intrinsic": {
+-      "version": "1.3.0",
+-      "resolved": "https://registry.npmjs.org/get-intrinsic/-/get-intrinsic-1.3.0.tgz",
+-      "integrity": "sha512-9fSjSaos/fRIVIp+xSJlE6lfwhES7LNtKaCBIamHsjr2na1BiABJPo0mOjjz8GJDURarmCPGqaiVg5mfjb98CQ==",
+-      "license": "MIT",
+-      "dependencies": {
+-        "call-bind-apply-helpers": "^1.0.2",
+-        "es-define-property": "^1.0.1",
+-        "es-errors": "^1.3.0",
+-        "es-object-atoms": "^1.1.1",
+-        "function-bind": "^1.1.2",
+-        "get-proto": "^1.0.1",
+-        "gopd": "^1.2.0",
+-        "has-symbols": "^1.1.0",
+-        "hasown": "^2.0.2",
+-        "math-intrinsics": "^1.1.0"
+-      },
+-      "engines": {
+-        "node": ">= 0.4"
+-      },
+-      "funding": {
+-        "url": "https://github.com/sponsors/ljharb"
+-      }
+-    },
+-    "node_modules/get-proto": {
+-      "version": "1.0.1",
+-      "resolved": "https://registry.npmjs.org/get-proto/-/get-proto-1.0.1.tgz",
+-      "integrity": "sha512-sTSfBjoXBp89JvIKIefqw7U2CCebsc74kiY6awiGogKtoSGbgjYE/G/+l9sF3MWFPNc9IcoOC4ODfKHfxFmp0g==",
+-      "license": "MIT",
+-      "dependencies": {
+-        "dunder-proto": "^1.0.1",
+-        "es-object-atoms": "^1.0.0"
+-      },
+-      "engines": {
+-        "node": ">= 0.4"
+-      }
+-    },
+-    "node_modules/gopd": {
+-      "version": "1.2.0",
+-      "resolved": "https://registry.npmjs.org/gopd/-/gopd-1.2.0.tgz",
+-      "integrity": "sha512-ZUKRh6/kUFoAiTAtTYPZJ3hw9wNxx+BIBOijnlG9PnrJsCcSjs1wyyD6vJpaYtgnzDrKYRSqf3OO6Rfa93xsRg==",
+-      "license": "MIT",
+-      "engines": {
+-        "node": ">= 0.4"
+-      },
+-      "funding": {
+-        "url": "https://github.com/sponsors/ljharb"
+-      }
+-    },
+-    "node_modules/has-symbols": {
+-      "version": "1.1.0",
+-      "resolved": "https://registry.npmjs.org/has-symbols/-/has-symbols-1.1.0.tgz",
+-      "integrity": "sha512-1cDNdwJ2Jaohmb3sg4OmKaMBwuC48sYni5HUw2DvsC8LjGTLK9h+eb1X6RyuOHe4hT0ULCW68iomhjUoKUqlPQ==",
+-      "license": "MIT",
+-      "engines": {
+-        "node": ">= 0.4"
+-      },
+-      "funding": {
+-        "url": "https://github.com/sponsors/ljharb"
+-      }
+-    },
+-    "node_modules/has-tostringtag": {
+-      "version": "1.0.2",
+-      "resolved": "https://registry.npmjs.org/has-tostringtag/-/has-tostringtag-1.0.2.tgz",
+-      "integrity": "sha512-NqADB8VjPFLM2V0VvHUewwwsw0ZWBaIdgo+ieHtK3hasLz4qeCRjYcqfB6AQrBggRKppKF8L52/VqdVsO47Dlw==",
+-      "license": "MIT",
+-      "dependencies": {
+-        "has-symbols": "^1.0.3"
+-      },
+-      "engines": {
+-        "node": ">= 0.4"
+-      },
+-      "funding": {
+-        "url": "https://github.com/sponsors/ljharb"
+-      }
+-    },
+-    "node_modules/hasown": {
+-      "version": "2.0.2",
+-      "resolved": "https://registry.npmjs.org/hasown/-/hasown-2.0.2.tgz",
+-      "integrity": "sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==",
+-      "license": "MIT",
+-      "dependencies": {
+-        "function-bind": "^1.1.2"
+-      },
+-      "engines": {
+-        "node": ">= 0.4"
+-      }
+-    },
+-    "node_modules/math-intrinsics": {
+-      "version": "1.1.0",
+-      "resolved": "https://registry.npmjs.org/math-intrinsics/-/math-intrinsics-1.1.0.tgz",
+-      "integrity": "sha512-/IXtbwEk5HTPyEwyKX6hGkYXxM9nbj64B+ilVJnC/R6B0pH5G4V3b0pVbL7DBj4tkhBAppbQUlf6F6Xl9LHu1g==",
+-      "license": "MIT",
+-      "engines": {
+-        "node": ">= 0.4"
+-      }
+-    },
+-    "node_modules/mime-db": {
+-      "version": "1.52.0",
+-      "resolved": "https://registry.npmjs.org/mime-db/-/mime-db-1.52.0.tgz",
+-      "integrity": "sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg==",
+-      "license": "MIT",
+-      "engines": {
+-        "node": ">= 0.6"
+-      }
+-    },
+-    "node_modules/mime-types": {
+-      "version": "2.1.35",
+-      "resolved": "https://registry.npmjs.org/mime-types/-/mime-types-2.1.35.tgz",
+-      "integrity": "sha512-ZDY+bPm5zTTF+YpCrAU9nK0UgICYPT0QtT1NZWFv4s++TNkcgVaT0g6+4R2uI4MjQjzysHB1zxuWL50hzaeXiw==",
+-      "license": "MIT",
+-      "dependencies": {
+-        "mime-db": "1.52.0"
+-      },
+-      "engines": {
+-        "node": ">= 0.6"
+-      }
+-    },
+-    "node_modules/prettier": {
+-      "version": "3.7.4",
+-      "resolved": "https://registry.npmjs.org/prettier/-/prettier-3.7.4.tgz",
+-      "integrity": "sha512-v6UNi1+3hSlVvv8fSaoUbggEM5VErKmmpGA7Pl3HF8V6uKY7rvClBOJlH6yNwQtfTueNkGVpOv/mtWL9L4bgRA==",
+-      "dev": true,
+-      "license": "MIT",
+-      "bin": {
+-        "prettier": "bin/prettier.cjs"
+-      },
+-      "engines": {
+-        "node": ">=14"
+-      },
+-      "funding": {
+-        "url": "https://github.com/prettier/prettier?sponsor=1"
+-      }
+-    },
+-    "node_modules/proxy-from-env": {
+-      "version": "1.1.0",
+-      "resolved": "https://registry.npmjs.org/proxy-from-env/-/proxy-from-env-1.1.0.tgz",
+-      "integrity": "sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==",
+-      "license": "MIT"
+-    }
+-  }
+-}
+Index: 8-weather-extented/weather.js
+===================================================================
+diff --git a/8-weather-extented/weather.js b/8-weather-extented/weather.js
+deleted file mode 100644
+--- a/8-weather-extented/weather.js	(revision e000d7d8b81f0a0b3a76f19c312743e73a2095d4)
++++ /dev/null	(revision e000d7d8b81f0a0b3a76f19c312743e73a2095d4)
+@@ -1,101 +0,0 @@
+-#!/usr/bin/env node
+-import { getArgs } from './helpers/args.js'
+-import { getIcon, getWeather } from './services/api.service.js'
+-import {
+-	printError,
+-	printHelp,
+-	printSuccess,
+-	printWeather
+-} from './services/log.service.js'
+-import {
+-	getKeyValue,
+-	saveKeyValue,
+-	TOKEN_DICTIONARY
+-} from './services/storage.service.js'
+-
+-const saveToken = async token => {
+-	if (!token.length) {
+-		return printError('Нет токена')
+-	}
+-	try {
+-		await saveKeyValue(TOKEN_DICTIONARY.token, token)
+-		printSuccess('Токен сохранен.')
+-	} catch (e) {
+-		printError(e.message)
+-	}
+-}
+-
+-const saveCity = async city => {
+-	if (!city.length) {
+-		return printError('Не добавлен город.')
+-	}
+-	try {
+-		await saveKeyValue(TOKEN_DICTIONARY.cities, city)
+-		printSuccess('Город сохранен.')
+-	} catch (e) {
+-		printError(e.message)
+-	}
+-}
+-
+-const saveLanguage = async lang => {
+-	if (!lang.length) {
+-		return printError('Не добавлен язык.')
+-	}
+-	if (lang !== 'en' && lang !== 'ru') {
+-		return printError('для изменения языка (en или ru)')
+-	}
+-	try {
+-		await saveKeyValue(TOKEN_DICTIONARY.lang, lang)
+-		printSuccess('Язык изменен.')
+-	} catch (e) {
+-		printError(e.message)
+-	}
+-}
+-
+-const getForcast = async () => {
+-	try {
+-		const cities = await getKeyValue(TOKEN_DICTIONARY.cities)
+-		for (const city of cities) {
+-			const data = await getWeather(city)
+-			await printWeather(data, getIcon(data.weather[0].icon))
+-		}
+-	} catch (e) {
+-		if (e.response.status === 404) {
+-			printError('Город указан неверно.')
+-		} else if (e.response.status === 401) {
+-			printError('Токен указан неправильно.')
+-		} else {
+-			printError(e.message)
+-		}
+-	}
+-}
+-
+-const initCLI = () => {
+-	const args = getArgs(process.argv)
+-
+-	if (args.h) {
+-		// help
+-		return printHelp()
+-	}
+-
+-	if (args.s) {
+-		// добавить город
+-		return saveCity(args.s)
+-	}
+-
+-	if (args.t) {
+-		// сохранить токен
+-		return saveToken(args.t)
+-	}
+-
+-	if (args.l) {
+-		// сохранить язык
+-		return saveLanguage(args.l)
+-	}
+-	// Вывести погоду
+-	return getForcast()
+-}
+-initCLI()
+-
+-// Добавить возможность хранения нескольких городов
+-// Сделать настройку языка и отображать результат на русском и английском в зависимости от настройки
+Index: 8-weather-extented/package.json
+===================================================================
+diff --git a/8-weather-extented/package.json b/8-weather-extented/package.json
+deleted file mode 100644
+--- a/8-weather-extented/package.json	(revision e000d7d8b81f0a0b3a76f19c312743e73a2095d4)
++++ /dev/null	(revision e000d7d8b81f0a0b3a76f19c312743e73a2095d4)
+@@ -1,22 +0,0 @@
+-{
+-  "name": "weather-cli",
+-  "version": "1.0.0",
+-  "description": "",
+-  "main": "weather.js",
+-  "bin": {
+-    "weather": "weather.js"
+-  },
+-  "type": "module",
+-  "scripts": {
+-    "start": "node weather.js",
+-    "test": "echo \"Error: no test specified\" && exit 1"
+-  },
+-  "devDependencies": {
+-    "prettier": "^3.7.4"
+-  },
+-  "dependencies": {
+-    "axios": "^1.13.2",
+-    "chalk": "^5.6.2",
+-    "dedent-js": "^1.0.1"
+-  }
+-}
+Index: 8-weather-extented/services/log.service.js
+===================================================================
+diff --git a/8-weather-extented/services/log.service.js b/8-weather-extented/services/log.service.js
+deleted file mode 100644
+--- a/8-weather-extented/services/log.service.js	(revision e000d7d8b81f0a0b3a76f19c312743e73a2095d4)
++++ /dev/null	(revision e000d7d8b81f0a0b3a76f19c312743e73a2095d4)
+@@ -1,55 +0,0 @@
+-import chalk from 'chalk'
+-import dedent from 'dedent-js'
+-import { getKeyValue, TOKEN_DICTIONARY } from './storage.service.js'
+-
+-const printError = error => {
+-	console.error(chalk.bgRed(' Error: ') + ' ' + error)
+-}
+-
+-const printSuccess = message => {
+-	console.log(chalk.bgGreen(' Success: ') + ' ' + message)
+-}
+-
+-const printHelp = () => {
+-	console.log(
+-		dedent`${chalk.bgYellow(' Help: ')}
+-		Без параметров - вывод погоды
+-		-s [CITY] для добавления города
+-		-h для вывода помощи
+-		-t [API_KEY] для сохранения токена
+-		-l [lang] для изменения языка (en или ru)
+-		`
+-	)
+-}
+-
+-const printWeather = async (res, icon) => {
+-	try {
+-		const lang = await getKeyValue(TOKEN_DICTIONARY.lang)
+-		switch (lang) {
+-			case 'ru':
+-				return console.log(
+-					dedent`${chalk.bgBlue(' WEATHER: ')}
+-				Погода в городе ${res.name}
+-				${icon} ${res.weather[0].description}
+-				Температура: ${res.main.temp} (ощущается как ${res.main.feels_like})
+-				Влажность: ${res.main.humidity}%
+-				Скорость ветра: ${res.wind.speed}
+-				`
+-				)
+-			default:
+-				return console.log(
+-					dedent`${chalk.bgBlue(' WEATHER: ')}
+-		    Weather in the city ${res.name}
+-		    ${icon} ${res.weather[0].description}
+-		    Temperature: ${res.main.temp} (feels like ${res.main.feels_like})
+-		    Humidity: ${res.main.humidity}%
+-		    Wind speed: ${res.wind.speed}
+-		    `
+-				)
+-		}
+-	} catch (e) {
+-		throw new Error(e.message)
+-	}
+-}
+-
+-export { printError, printSuccess, printHelp, printWeather }
+Index: 8-weather-extented/services/api.service.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/8-weather-extented/services/api.service.js b/9-weather-api/services/api.service.js
+rename from 8-weather-extented/services/api.service.js
+rename to 9-weather-api/services/api.service.js
+--- a/8-weather-extented/services/api.service.js	(revision e000d7d8b81f0a0b3a76f19c312743e73a2095d4)
++++ b/9-weather-api/services/api.service.js	(date 1764845239405)
+@@ -27,7 +27,6 @@
+ 	//const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}`
+ 
+ 	const token = await getKeyValue(TOKEN_DICTIONARY.token)
+-	const lang = (await getKeyValue(TOKEN_DICTIONARY.lang)) ?? 'en'
+ 
+ 	if (!token) {
+ 		throw new Error('No token provided')
+@@ -39,7 +38,7 @@
+ 			params: {
+ 				q: city,
+ 				appid: token,
+-				lang: lang,
++				lang: 'ru',
+ 				units: 'metric'
+ 			}
+ 		}
+Index: 9-weather-api/helper/formatReport.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/9-weather-api/helper/formatReport.js b/9-weather-api/helper/formatReport.js
+new file mode 100644
+--- /dev/null	(date 1765537541439)
++++ b/9-weather-api/helper/formatReport.js	(date 1765537541439)
+@@ -0,0 +1,16 @@
++import chalk from 'chalk'
++import dedent from 'dedent-js'
++import { getIcon } from '../services/api.service.js'
++
++const formatWeatherReport = res => {
++	const icon = getIcon(res.weather[0].icon)
++	return dedent`${chalk.bgBlue(' WEATHER: ')}
++		Погода в городе ${res.name}
++		${icon} ${res.weather[0].description}
++		Температура: ${res.main.temp} (ощущается как ${res.main.feels_like})
++		Влажность: ${res.main.humidity}%
++		Скорость ветра: ${res.wind.speed}
++		`
++}
++
++export { formatWeatherReport }
+Index: 8-weather-extented/services/storage.service.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/8-weather-extented/services/storage.service.js b/9-weather-api/services/storage.service.js
+rename from 8-weather-extented/services/storage.service.js
+rename to 9-weather-api/services/storage.service.js
+--- a/8-weather-extented/services/storage.service.js	(revision e000d7d8b81f0a0b3a76f19c312743e73a2095d4)
++++ b/9-weather-api/services/storage.service.js	(date 1764837894624)
+@@ -6,8 +6,7 @@
+ 
+ const TOKEN_DICTIONARY = {
+ 	token: 'token',
+-	cities: 'cities',
+-	lang: 'lang'
++	city: 'city'
+ }
+ 
+ const saveKeyValue = async (key, value) => {
+@@ -16,22 +15,10 @@
+ 		const file = await promises.readFile(filePath)
+ 		data = JSON.parse(file)
+ 	}
+-	if (key === 'cities') {
+-		if (!data.cities) data.cities = []
+-		await addCity(value, data.cities)
+-	} else {
+-		data[key] = value
+-	}
++	data[key] = value
+ 	await promises.writeFile(filePath, JSON.stringify(data))
+ }
+ 
+-const addCity = async (newCity, cities) => {
+-	if (cities.includes(newCity)) {
+-		throw new Error('Такой город уже добавлен')
+-	}
+-	cities.push(newCity)
+-}
+-
+ const getKeyValue = async key => {
+ 	if (await isExist(filePath)) {
+ 		const file = await promises.readFile(filePath)
+Index: 9-weather-api/index.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/9-weather-api/index.js b/9-weather-api/index.js
+new file mode 100644
+--- /dev/null	(date 1765536872160)
++++ b/9-weather-api/index.js	(date 1765536872160)
+@@ -0,0 +1,11 @@
++import express from 'express'
++import cityRoutes from './city/city.routes.js'
++
++const app = express()
++
++const port = process.env.PORT || 3000
++
++app.use(express.json())
++app.use('/api/city', cityRoutes)
++
++// TODO: Написать простое API на express, которое бы выдавало погоду по запросу города.
+Index: 9-weather-api/city/city.routes.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/9-weather-api/city/city.routes.js b/9-weather-api/city/city.routes.js
+new file mode 100644
+--- /dev/null	(date 1765537567605)
++++ b/9-weather-api/city/city.routes.js	(date 1765537567605)
+@@ -0,0 +1,20 @@
++import { Router } from 'express'
++import { formatWeatherReport } from '../helper/formatReport.js'
++import { getIcon, getWeather } from '../services/api.service.js'
++import { printWeather } from '../services/log.service.js'
++
++const router = Router()
++
++router.route('/weather').get(async (req, res) => {
++	const { city } = req.data
++	if (!city) {
++		return res.status(400).json({ message: 'Укажите город' })
++	}
++	const data = await getWeather(city)
++	const weather = {
++		description: formatWeatherReport(data)
++	}
++	res.json(weather)
++})
++
++export default router
+diff --git a/8-weather-extented/.gitignore b/9-weather-api/.gitignore
+rename from 8-weather-extented/.gitignore
+rename to 9-weather-api/.gitignore
+diff --git a/8-weather-extented/.prettierignore b/9-weather-api/.prettierignore
+rename from 8-weather-extented/.prettierignore
+rename to 9-weather-api/.prettierignore
+diff --git a/8-weather-extented/.prettierrc b/9-weather-api/.prettierrc
+rename from 8-weather-extented/.prettierrc
+rename to 9-weather-api/.prettierrc
